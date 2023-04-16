@@ -3,7 +3,10 @@ import "./heroBanner.styles.scss";
 
 const HeroBanner = () => {
   return (
-    <div>
+    <div className='heroBanner'>
+        <div className='wrapper'>
+          
+        </div>
       <h1>Hie there</h1>
     </div>
   )

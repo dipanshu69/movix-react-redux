@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
-import { fetchDataFromApi } from "./utils/api";
-import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { getApiConf, getGenres } from "./store/slice";
+import { fetchDataFromApi } from "./utils/api";
 
 import Home from "./pages/home/home.page";
 import Details from "./pages/details/details.page";
 import SearchResult from "./pages/searchResult/searchresult.page";
 import Explore from "./pages/explore/explore.page";
 import PageNotFound from "./pages/404/404.page";
+import Header from "./components/header/header.component";
+import Footer from "./components/footer/footer.component";
+
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +31,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/mediaType/:id" element={<Details />} />
@@ -35,6 +39,7 @@ function App() {
         <Route path="/explore/:mediaType" element={<Explore />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

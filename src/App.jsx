@@ -18,12 +18,16 @@ import "./App.css";
 function App() {
   const dispatch = useDispatch();
   const url = useSelector((state) => state.home.url);
-  console.log(url);
 
   useEffect(() => {
     const apiTesting = () => {
-      fetchDataFromApi("/movie/popular").then((res) => {
-        dispatch(getApiConf(res));
+      fetchDataFromApi("/configuration").then((res) => {
+        const url = {
+          backdrop: res.images.secure_base_url + "original",
+          poster: res.images.secure_base_url + "original",
+          profile: res.images.secure_base_url + "original",
+        };
+        dispatch(getApiConf(url));
       });
     };
     apiTesting();
